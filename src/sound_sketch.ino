@@ -79,7 +79,7 @@ void SayHello() {
   Serial.println("Hello yourself!");
 }
 
-void playFunkytown() {
+void PlayFunkytown() {
   play = 1;
 }
 
