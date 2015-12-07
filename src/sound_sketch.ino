@@ -48,12 +48,13 @@ void setup() {
   pinMode(speakerPin, OUTPUT);
 
   SCmd.addCommand("Hello", SayHello);
+  SCmd.addCommand("funkytown", PlayFunkytown);
   SCmd.addDefaultHandler(unrecognized);
 }
 
 int play = 0;
 void loop() {
-  if (play == 0) {
+  if (play == 1) {
     /* TODO: Think of a way to functionize (maybe macro?) song playing.
      *       This method currently pauses execution of
      *       the loop so any other things wouldn't be happening  :(
@@ -68,7 +69,7 @@ void loop() {
       // pause between notes
       toneDelayLong(tempo / 2);
     }
-    play = 1;
+    play = 0;
   }
 
   SCmd.readSerial();
@@ -76,6 +77,10 @@ void loop() {
 
 void SayHello() {
   Serial.println("Hello yourself!");
+}
+
+void playFunkytown() {
+  play = 1;
 }
 
 void unrecognized() {
